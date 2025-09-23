@@ -357,10 +357,10 @@ void HuffmanCompressDirectory(const char *dirPath) {
   fclose(out);
   
   gettimeofday(&end_time, NULL);
-  double compression_time = (end_time.tv_sec - start_time.tv_sec) + (end_time.tv_usec - start_time.tv_usec) / 1000000.0;
+  double compression_time = (end_time.tv_sec - start_time.tv_sec) * 1000.0 + (end_time.tv_usec - start_time.tv_usec) / 1000.0;
   
   printf("Directory compressed successfully to archive.huff\n");
-  printf("Compression time: %.3f seconds\n", compression_time);
+  printf("Compression time: %.3f ms\n", compression_time);
   
 cleanup:
   closedir(dir);
@@ -478,10 +478,10 @@ void HuffmanDecompressDirectory(const char *archiveFile, const char *outputDir) 
   free(freqList);
   
   gettimeofday(&end_time, NULL);
-  double decompression_time = (end_time.tv_sec - start_time.tv_sec) + (end_time.tv_usec - start_time.tv_usec) / 1000000.0;
+  double decompression_time = (end_time.tv_sec - start_time.tv_sec) * 1000.0 + (end_time.tv_usec - start_time.tv_usec) / 1000.0;
 
   printf("Directory decompression completed!\n");
-  printf("Decompression time: %.3f seconds\n", decompression_time);
+  printf("Decompression time: %.3f ms\n", decompression_time);
 }
 
 int main(int argc, char *argv[]) {
